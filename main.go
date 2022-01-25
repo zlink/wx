@@ -15,6 +15,9 @@ func main() {
 
 	http.HandleFunc("/", service.IndexHandler)
 	http.HandleFunc("/api/count", service.CounterHandler)
+	http.HandleFunc("/ping", func(rw http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(rw, "pong")
+	})
 
 	log.Fatal(http.ListenAndServe(":80", nil))
 }
